@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mock DS-160 Practice Form (Preparation Only)</title>
+  <style>
+    :root {
+      --maxw: 980px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      margin: 0; padding: 0; background: #f7f7fb; color: #111;
+    }
+    header {
+      background: #1f2937; color: #fff; padding: 28px 18px; text-align: center;
+      border-bottom: 4px solid #111827;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    header p { margin: 0; opacity: .9; }main { max-width: var(--maxw); margin: 22px auto; padding: 0 16px 64px; }
+.card {
+  background: #fff; border-radius: 16px; box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  margin: 16px 0; overflow: hidden; border: 1px solid #e5e7eb;
+}
+.card h2 { margin: 0; padding: 16px 18px; background: #f3f4f6; border-bottom: 1px solid #e5e7eb; font-size: 1.15rem; }
+.card .body { padding: 18px; }
+
+.grid { display: grid; gap: 14px; }
+.g-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.g-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 780px){ .g-2, .g-3 { grid-template-columns: 1fr; } }
+
+label { display: block; font-weight: 600; margin-bottom: 6px; }
+input[type="text"], input[type="date"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
+  width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid #d1d5db; background: #fff;
+  font: inherit; outline: none; transition: border-color .2s, box-shadow .2s;
+}
+textarea { min-height: 88px; }
+input:focus, select:focus, textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,.15); }
+
+.hint { color: #6b7280; font-size: .92rem; }
+
+.actions { display:flex; gap:12px; flex-wrap: wrap; margin-top: 10px; }
+button {
+  appearance: none; border: 0; padding: 12px 16px; border-radius: 12px; font-weight: 700; cursor: pointer;
+}
+.primary { background: #2563eb; color: #fff; }
+.secondary { background: #e5e7eb; color: #111; }
+.ghost { background: transparent; border: 1px dashed #9ca3af; color: #374151; }
+
+.required::after { content: " *"; color: #dc2626; }
+
+.note { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; padding: 10px 12px; border-radius: 10px; }
+
+.toast { position: fixed; right: 16px; bottom: 16px; background: #111827; color: #fff; padding: 12px 14px; border-radius: 12px; box-shadow: 0 10px 24px rgba(0,0,0,.25); opacity: 0; transform: translateY(8px); pointer-events: none; transition: .25s; }
+.toast.show { opacity: 1; transform: translateY(0); }
+
+footer { text-align:center; color: #6b7280; margin: 24px 0 60px; font-size: .95rem; }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mock DS-160 Practice Form</h1>
+    <p>For preparation only — not an official application. Do not use for submission to the U.S. Department of State.</p>
+  </header>  <main>
+    <div class="note" style="margin-bottom:16px">
+      <strong>Important:</strong> This form is meant to help you collect answers before you copy them into the official DS‑160 on the U.S. Government site. You can embed this page in Jotform using an <em>iFrame</em> widget. Submissions will be sent to your endpoint (set below in code).
+    </div><!-- SECTION 1: Personal Information -->
+<form id="ds160Form">
+  <div class="card">
+    <h2>1. Personal Information</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="surname" class="required">Surname (Last Name)</label>
+        <input id="surname" name="surname" type="text" required />
+      </div>
+      <div>
+        <label for="givenNames" class="required">Given Names (First & Middle)</label>
+        <input id="givenNames" name="givenNames" type="text" required />
+      </div>
+      <div>
+        <label for="nativeName">Full Name in Native Alphabet</label>
+        <input id="nativeName" name="nativeName" type="text" />
+      </div>
+      <div>
+        <label for="otherNames">Other Names Used</label>
+        <input id="otherNames" name="otherNames" type="text" placeholder="Maiden, religious, professional, etc." />
+      </div>
+      <div>
+        <label for="sex" class="required">Sex</label>
+        <select id="sex" name="sex" required>
+          <option value="">Select…</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="maritalStatus" class="required">Marital Status</label>
+        <select id="maritalStatus" name="maritalStatus" required>
+          <option value="">Select…</option>
+          <option>Single</option>
+          <option>Married</option>
+          <option>Divorced</option>
+          <option>Widowed</option>
+          <option>Separated</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="dob" class="required">Date of Birth</label>
+        <input id="dob" name="dob" type="date" required />
+      </div>
+      <div>
+        <label for="birthCity" class="required">City of Birth</label>
+        <input id="birthCity" name="birthCity" type="text" required />
+      </div>
+      <div>
+        <label for="birthCountry" class="required">Country of Birth</label>
+        <input id="birthCountry" name="birthCountry" type="text" required />
+      </div>
+      <div>
+        <label for="nationality" class="required">Nationality</label>
+        <input id="nationality" name="nationality" type="text" required />
+      </div>
+      <div>
+        <label for="otherNationalities">Other Nationalities</label>
+        <input id="otherNationalities" name="otherNationalities" type="text" />
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Passport Information -->
+  <div class="card">
+    <h2>2. Passport Information</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="passportType" class="required">Passport/Travel Document Type</label>
+        <select id="passportType" name="passportType" required>
+          <option value="">Select…</option>
+          <option>Regular</option>
+          <option>Official</option>
+          <option>Diplomatic</option>
+        </select>
+      </div>
+      <div>
+        <label for="passportNumber" class="required">Passport Number</label>
+        <input id="passportNumber" name="passportNumber" type="text" required />
+      </div>
+      <div>
+        <label for="passportBookNumber">Passport Book Number (if applicable)</label>
+        <input id="passportBookNumber" name="passportBookNumber" type="text" />
+      </div>
+      <div>
+        <label for="issuingCountry" class="required">Country/Authority Issuing Passport</label>
+        <input id="issuingCountry" name="issuingCountry" type="text" required />
+      </div>
+      <div>
+        <label for="issueCity">City of Issue</label>
+        <input id="issueCity" name="issueCity" type="text" />
+      </div>
+      <div>
+        <label for="issueDate" class="required">Date of Issue</label>
+        <input id="issueDate" name="issueDate" type="date" required />
+      </div>
+      <div>
+        <label for="expiryDate" class="required">Date of Expiration</label>
+        <input id="expiryDate" name="expiryDate" type="date" required />
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Travel Information -->
+  <div class="card">
+    <h2>3. Travel Information</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="purpose" class="required">Purpose of Trip to U.S.</label>
+        <input id="purpose" name="purpose" type="text" required />
+      </div>
+      <div>
+        <label for="visaType" class="required">Specify Visa Type</label>
+        <input id="visaType" name="visaType" type="text" placeholder="e.g., H-2B, H-1B, L-1" required />
+      </div>
+      <div>
+        <label for="arrivalDate">Intended Date of Arrival in U.S.</label>
+        <input id="arrivalDate" name="arrivalDate" type="date" />
+      </div>
+      <div>
+        <label for="lengthOfStay">Intended Length of Stay</label>
+        <input id="lengthOfStay" name="lengthOfStay" type="text" placeholder="e.g., 3 months" />
+      </div>
+      <div class="g-2" style="grid-column:1/-1; display:grid; gap:14px; grid-template-columns:repeat(2, minmax(0,1fr))">
+        <div>
+          <label for="stayAddress" class="required">Address Where You Will Stay in the U.S.</label>
+          <input id="stayAddress" name="stayAddress" type="text" required />
+        </div>
+        <div>
+          <label for="stayCity" class="required">City</label>
+          <input id="stayCity" name="stayCity" type="text" required />
+        </div>
+        <div>
+          <label for="stayState">State</label>
+          <input id="stayState" name="stayState" type="text" />
+        </div>
+        <div>
+          <label for="stayZip">ZIP/Postal Code</label>
+          <input id="stayZip" name="stayZip" type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: U.S. Contact Information -->
+  <div class="card">
+    <h2>4. U.S. Contact Information</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="usContactName" class="required">Name of Person/Organization in U.S.</label>
+        <input id="usContactName" name="usContactName" type="text" required />
+      </div>
+      <div>
+        <label for="usRelationship" class="required">Relationship to You</label>
+        <input id="usRelationship" name="usRelationship" type="text" required />
+      </div>
+      <div>
+        <label for="usContactEmail">Email Address</label>
+        <input id="usContactEmail" name="usContactEmail" type="email" />
+      </div>
+      <div>
+        <label for="usContactPhone">Phone Number</label>
+        <input id="usContactPhone" name="usContactPhone" type="tel" />
+      </div>
+      <div class="g-2" style="grid-column:1/-1; display:grid; gap:14px; grid-template-columns:repeat(2, minmax(0,1fr))">
+        <div>
+          <label for="usContactAddress" class="required">Address</label>
+          <input id="usContactAddress" name="usContactAddress" type="text" required />
+        </div>
+        <div>
+          <label for="usContactCity" class="required">City</label>
+          <input id="usContactCity" name="usContactCity" type="text" required />
+        </div>
+        <div>
+          <label for="usContactState">State</label>
+          <input id="usContactState" name="usContactState" type="text" />
+        </div>
+        <div>
+          <label for="usContactZip">ZIP/Postal Code</label>
+          <input id="usContactZip" name="usContactZip" type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Family Information -->
+  <div class="card">
+    <h2>5. Family Information</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="fatherName">Father’s Full Name</label>
+        <input id="fatherName" name="fatherName" type="text" />
+      </div>
+      <div>
+        <label for="motherName">Mother’s Full Name</label>
+        <input id="motherName" name="motherName" type="text" />
+      </div>
+      <div>
+        <label class="required">Immediate relatives in the U.S.?</label>
+        <select id="hasRelativesUS" name="hasRelativesUS" required>
+          <option value="">Select…</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="relativesDetails">If yes, list names, relationships, and immigration status</label>
+        <textarea id="relativesDetails" name="relativesDetails" placeholder="Example: John Doe – Brother – U.S. Citizen"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: Work/Education/Training Information -->
+  <div class="card">
+    <h2>6. Work / Education / Training</h2>
+    <div class="body grid g-2">
+      <div>
+        <label for="occupation" class="required">Primary Occupation</label>
+        <input id="occupation" name="occupation" type="text" required />
+      </div>
+      <div>
+        <label for="employerName">Present Employer/School Name</label>
+        <input id="employerName" name="employerName" type="text" />
+      </div>
+      <div>
+        <label for="employerAddress">Employer/School Address</label>
+        <input id="employerAddress" name="employerAddress" type="text" />
+      </div>
+      <div>
+        <label for="monthlyIncome">Monthly Income (if employed)</label>
+        <input id="monthlyIncome" name="monthlyIncome" type="number" min="0" step="0.01" />
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="prevEmployment">Previous Employment (last 5 years)</label>
+        <textarea id="prevEmployment" name="prevEmployment" placeholder="Employer – Title – Dates"></textarea>
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="educationHistory">Education History</label>
+        <textarea id="educationHistory" name="educationHistory" placeholder="School – Degree – Dates"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: Security and Background Questions -->
+  <div class="card">
+    <h2>7. Security and Background</h2>
+    <div class="body grid g-2">
+      <div>
+        <label class="required">Ever arrested or convicted?</label>
+        <select id="qArrested" name="qArrested" required>
+          <option value="">Select…</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      <div>
+        <label class="required">Ever refused a U.S. visa or entry?</label>
+        <select id="qRefused" name="qRefused" required>
+          <option value="">Select…</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      <div>
+        <label class="required">Communicable diseases?</label>
+        <select id="qDisease" name="qDisease" required>
+          <option value="">Select…</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      <div>
+        <label class="required">Ever engaged in terrorist activities?</label>
+        <select id="qTerror" name="qTerror" required>
+          <option value="">Select…</option>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </div>
+      <div style="grid-column:1/-1">
+        <label for="securityExplain">If any answer is "Yes", briefly explain</label>
+        <textarea id="securityExplain" name="securityExplain"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: Photo (Optional placeholder) -->
+  <div class="card">
+    <h2>8. Photo</h2>
+    <div class="body">
+      <label for="photo">Upload a 2x2 inch (51x51 mm) recent color photo (optional)</label>
+      <input id="photo" name="photo" type="file" accept="image/*" />
+      <p class="hint">If your endpoint supports files (e.g., Formspree Gold or your own server), this will be attached.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 9: Certification -->
+  <div class="card">
+    <h2>9. Certification</h2>
+    <div class="body">
+      <label><input id="certify" type="checkbox" required /> I certify that the information provided is accurate to the best of my knowledge.</label>
+      <div class="actions">
+        <button type="button" class="secondary" id="saveDraftBtn">Save Draft</button>
+        <button type="button" class="ghost" id="loadDraftBtn">Load Draft</button>
+        <button type="button" class="ghost" id="clearDraftBtn">Clear Draft</button>
+        <button type="submit" class="primary">Submit Practice Form</button>
+      </div>
+      <p class="hint">Drafts are saved to your browser only (localStorage). Submissions are sent to your configured endpoint (see code below).</p>
+    </div>
+  </div>
+</form>
+
+<div id="result" class="card" style="display:none">
+  <h2>Submission Received</h2>
+  <div class="body">
+    <p>Thank you! Your answers have been sent to the configured endpoint. You can now copy these answers into the official DS‑160 at <a href="https://ceac.state.gov/genniv/" target="_blank" rel="noopener">ceac.state.gov</a>.</p>
+    <div class="actions">
+      <button class="secondary" id="newEntryBtn">New Entry</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>This is a preparation aid only and is not affiliated with or endorsed by the U.S. Department of State.</p>
+</footer>
+
+  </main>  <div id="toast" class="toast">Draft saved</div>  <script>
+    // ==== CONFIGURE YOUR SUBMISSION ENDPOINT HERE ====
+    // Option A: Formspree — create a form and replace the URL below with your unique endpoint
+    // Example: const FORM_ENDPOINT = "https://formspree.io/f/xyzabcde";
+    // Option B: Your own server — point to your API route that accepts multipart/form-data
+    const FORM_ENDPOINT = "https://formspree.io/f/your-endpoint"; // <-- CHANGE THIS
+
+    // Optional: Redirect after successful submit (leave blank to show success card)
+    const SUCCESS_REDIRECT_URL = ""; // e.g., "https://yourdomain.com/thank-you"
+
+    // ====== UTILITIES ======
+    const form = document.getElementById('ds160Form');
+    const toast = document.getElementById('toast');
+    const resultCard = document.getElementById('result');
+    const newEntryBtn = document.getElementById('newEntryBtn');
+
+    function showToast(msg){
+      toast.textContent = msg || 'Saved';
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 2200);
+    }
+
+    function formToObject(formEl){
+      const obj = {};
+      const fd = new FormData(formEl);
+      fd.forEach((val, key) => {
+        if (obj[key] !== undefined) {
+          // convert to array if multiple fields share same name
+          if (!Array.isArray(obj[key])) obj[key] = [obj[key]];
+          obj[key].push(val);
+        } else {
+          obj[key] = val;
+        }
+      });
+      return obj;
+    }
+
+    // ====== DRAFT (localStorage) ======
+    const STORAGE_KEY = 'ds160_draft_v1';
+
+    function saveDraft(){
+      const data = formToObject(form);
+      // files cannot be stored in localStorage; ignore photo
+      delete data.photo;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      showToast('Draft saved');
+    }
+
+    function loadDraft(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) { showToast('No draft found'); return; }
+      const data = JSON.parse(raw);
+      for (const [k,v] of Object.entries(data)){
+        const el = form.elements[k];
+        if (!el) continue;
+        if (el instanceof RadioNodeList || (NodeList.prototype.isPrototypeOf(el) && el.length)){
+          // handle grouped fields if needed
+          const first = form.querySelector(`[name="${k}"]`);
+          if (first && first.tagName === 'SELECT') first.value = v;
+        } else if (el) {
+          el.value = v;
+        }
+      }
+      showToast('Draft loaded');
+    }
+
+    function clearDraft(){
+      localStorage.removeItem(STORAGE_KEY);
+      showToast('Draft cleared');
+    }
+
+    document.getElementById('saveDraftBtn').addEventListener('click', saveDraft);
+    document.getElementById('loadDraftBtn').addEventListener('click', loadDraft);
+    document.getElementById('clearDraftBtn').addEventListener('click', clearDraft);
+
+    // ====== SUBMISSION ======
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!FORM_ENDPOINT || FORM_ENDPOINT.includes('your-endpoint')){
+        alert('Please configure FORM_ENDPOINT in the code before submitting.');
+        return;
+      }
+
+      const fd = new FormData(form);
+      // Attach a JSON summary for convenience on the receiving side
+      const summary = JSON.stringify(formToObject(form), null, 2);
+      fd.append('summary_json', new Blob([summary], { type: 'application/json' }), 'summary.json');
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: fd
+        });
+
+        if (!res.ok) throw new Error('Network response was not ok');
+
+        // Clear draft on success
+        cl
